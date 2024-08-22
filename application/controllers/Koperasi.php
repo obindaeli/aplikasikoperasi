@@ -41,7 +41,7 @@ class Koperasi extends CI_Controller {
             $this->load->view('partials/header');
             $this->load->view('partials/navbar',$data);
             $this->load->view('partials/sidebar');
-            $this->load->view('Dashboard/tambahdesa',$data);
+            $this->load->view('Koperasi/tambahkoperasi',$data);
             $this->load->view('partials/footer');
         }else{
             $data=[

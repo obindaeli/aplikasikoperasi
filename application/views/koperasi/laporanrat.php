@@ -12,7 +12,7 @@
                     <h4>Daftar RAT</h4>
                     <div class="card-header-action">
                         <div class="btn-group">
-                            <a href="<?=base_url('Dashboard/tambahdesa')?>" class="btn btn-primary"> Tambah Data</a>
+                            <a href="<?=base_url('Koperasi/tambahrat')?>" class="btn btn-primary"> Tambah Data</a>
                         </div>
                     </div>
                 </div>
