@@ -26,11 +26,11 @@
 
                             <div class="form-group col-8">
                                 <label>Jenis Koperasi</label>
-                                <select name="a" id="" class="form-control" required>
+                                <select name="b" id="" class="form-control" required>
                                   <option value="" disabled selected hidden>[PILIH JENIS KOPERASI]</option>
                                   <?php 
-                                    foreach ($kecamatan as $row ): 
-                                      echo '<option value="'.$row->id_kecamatan.'">'.$row->nama_kecamatan.'</option>
+                                    foreach ($jenis as $row ): 
+                                      echo '<option value="'.$row->id_jenis_koperasi.'">'.$row->jenis_koperasi.'</option>
                                       ';
                                       endforeach;                                  
                                   ?>
@@ -39,33 +39,37 @@
 
                             <div class="form-group col-8">
                                 <label>Nama Ketua</label>
-                                <input type="text" class="form-control" name="a" autocomplete="off">
+                                <input type="text" class="form-control" name="c" autocomplete="off">
                             </div>
+
                             <div class="form-group col-8">
                                 <label>Nama Sekretaris</label>
-                                <input type="text" class="form-control" name="a" autocomplete="off">
+                                <input type="text" class="form-control" name="d" autocomplete="off">
                             </div>
+
                             <div class="form-group col-8">
                                 <label>Nama Bendahara </label>
-                                <input type="text" class="form-control" name="a" autocomplete="off">
+                                <input type="text" class="form-control" name="e" autocomplete="off">
                             </div>
+
                             <div class="form-group col-8">
                                 <label>Nama Pengawas </label>
-                                <input type="text" class="form-control" name="a" autocomplete="off">
+                                <input type="text" class="form-control" name="f" autocomplete="off">
                             </div>
+
                             <div class="form-group col-8">
                                 <label>Jumlah Anggota </label>
-                                <input type="number" class="form-control" name="a" autocomplete="off">
+                                <input type="number" class="form-control" name="g" autocomplete="off">
                             </div>
                             
                             <div class="form-group col-8">
                                 <label>Alamat </label>
-                                <input type="text" class="form-control" name="a" autocomplete="off">
+                                <input type="text" class="form-control" name="h" autocomplete="off">
                             </div>
 
                             <div class="form-group col-8">
                                 <label>Kecamatan</label>
-                                <select name="a" id="" class="form-control" required>
+                                <select name="i" id="" class="form-control" required>
                                   <option value="" disabled selected hidden>[PILIH KECAMATAN]</option>
                                   <?php 
                                     foreach ($kecamatan as $row ): 
@@ -77,11 +81,11 @@
                             </div>
                             <div class="form-group col-8">
                                 <label>Desa</label>
-                                <select name="a" id="" class="form-control" required>
+                                <select name="j" id="" class="form-control" required>
                                   <option value="" disabled selected hidden>[PILIH DESA]</option>
                                   <?php 
-                                    foreach ($kecamatan as $row ): 
-                                      echo '<option value="'.$row->id_kecamatan.'">'.$row->nama_kecamatan.'</option>
+                                    foreach ($desa as $row ): 
+                                      echo '<option value="'.$row->id_desa.'">'.$row->nama_desa.'</option>
                                       ';
                                       endforeach;                                  
                                   ?>

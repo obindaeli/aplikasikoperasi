@@ -37,6 +37,9 @@ class Koperasi extends CI_Controller {
         if($this->form_validation->run()==false){
             $data = [
                 'kecamatan'=>$this->M_data->tampil_data('kecamatan')->result(),			
+                'jenis'=>$this->M_data->tampil_data('jenis_koperasi')->result(),			
+                'desa'=>$this->M_data->tampil_data('desa')->result(),			
+                'kecamatan'=>$this->M_data->tampil_data('kecamatan')->result(),			
             ];
             $this->load->view('partials/header');
             $this->load->view('partials/navbar',$data);
