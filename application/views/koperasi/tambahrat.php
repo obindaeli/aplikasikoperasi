@@ -4,7 +4,7 @@
           <div class="section-header">
             <h1>RAT</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="<?=base_url('Koperasi/koperasi')?>">Koperasi</a></div>
+              <div class="breadcrumb-item active"><a href="<?=base_url('Koperasi/rat')?>">Koperasi</a></div>
               <div class="breadcrumb-item">Tambah RAT</div>
             </div>
           </div>
