@@ -25,6 +25,7 @@
                 <li><a class="nav-link" href="<?=base_url('Dashboard/Kecamatan')?>">Kecamatan</a></li>
                 <li><a class="nav-link" href="<?=base_url('Dashboard/Desa')?>">Desa</a></li>
                 <li><a class="nav-link" href="<?=base_url('Dashboard/Pengguna')?>">Pengguna</a></li>
+                <li><a class="nav-link" href="<?=base_url('Dashboard/jeniskoperasi')?>">Jenis Koperasi</a></li>
               </ul>
             </li>
              

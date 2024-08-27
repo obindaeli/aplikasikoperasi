@@ -90,11 +90,8 @@ class Dashboard extends CI_Controller {
     public function tambahkecamatan(){
         $data = [
 			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
-
 		];
-
         $this->form_validation->set_rules('a','a','required|trim');
-       
         if($this->form_validation->run()==false){
             $data = [
                 'kecamatan'=>$this->M_data->tampil_data('kecamatan')->result(),			
@@ -128,22 +125,18 @@ class Dashboard extends CI_Controller {
             'desa'=>$this->M_data->viewleftjointwotabel('desa','kecamatan','id_kecamatan'),	
 			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
 		];
-
-            $this->load->view('partials/header');
-            $this->load->view('partials/navbar',$data);
-            $this->load->view('partials/sidebar');
-            $this->load->view('Dashboard/desa',$data);
-            $this->load->view('partials/footer');    
+		$this->load->view('partials/header');
+		$this->load->view('partials/navbar',$data);
+		$this->load->view('partials/sidebar');
+		$this->load->view('Dashboard/desa',$data);
+		$this->load->view('partials/footer');    
 	}
 
 	public function tambahdesa(){
         $data = [
 			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
-
 		];
-
         $this->form_validation->set_rules('b','b','required|trim');
-       
         if($this->form_validation->run()==false){
             $data = [
                 'kecamatan'=>$this->M_data->tampil_data('kecamatan')->result(),			
@@ -172,7 +165,44 @@ class Dashboard extends CI_Controller {
 		redirect('Dashboard/desa');
 	}
 
-	
+	 //JENIS KOPERASI
+	 public function jeniskoperasi(){
+        $data = [
+           
+			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array(),
+            'jeniskoperasi'=>$this->M_data->tampil_data('jenis_koperasi')->result(),			
+		];
+		$this->load->view('partials/header');
+		$this->load->view('partials/navbar',$data);
+		$this->load->view('partials/sidebar');
+		$this->load->view('dashboard/jeniskoperasi',$data);
+		$this->load->view('partials/footer');    
+	}
+
+    public function tambahjeniskoperasi(){
+        $data = [
+			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
+		];
+        $this->form_validation->set_rules('a','a','required|trim');
+       
+        if($this->form_validation->run()==false){
+            $data = [
+                'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
+            ];
+            $this->load->view('partials/header');
+            $this->load->view('partials/navbar',$data);
+            $this->load->view('partials/sidebar');
+            $this->load->view('dashboard/tambahjeniskoperasi',$data);
+            $this->load->view('partials/footer');
+        }else{
+            $data=[
+				'jenis_koperasi'=> htmlspecialchars($this->input->post('a'))
+			];
+			$this->M_data->input_data('jenis_koperasi',$data);
+			$this->session->set_flashdata('flash', 'success-DATA BERHASIL DITAMBAHKAN');
+			redirect('Dashboard/jeniskoperasi');
+        }        
+	}
 
 	
 }

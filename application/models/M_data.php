@@ -28,6 +28,19 @@ class M_data extends CI_Model{
             $this->db->update($table,$data);
         }
 
+        public function detail_data($id=NULL){
+            $query=$this->db->get_where('koperasi',array('id_koperasi' =>$id))->row();
+            return $query;
+        } 
+
+        public function getrat($id=NULL){
+            $query=$this->db->query("SELECT * FROM `tb_rat` 
+                                    LEFT JOIN koperasi ON koperasi.id_koperasi=tb_rat.id_koperasi
+                                    LEFT JOIN jenis_koperasi ON jenis_koperasi.id_jenis_koperasi=koperasi.id_jenis_koperasi 
+                                    WHERE koperasi.id_koperasi='$id'");
+            return $query->result();
+        } 
+
         public function viewleftjointwotabel($table1, $table2, $field1){
             $query=$this->db->query("SELECT * FROM `$table1` LEFT JOIN `$table2` ON `$table1`.`$field1`=`$table2`.`$field1`");
             return $query->result();

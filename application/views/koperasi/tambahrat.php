@@ -16,14 +16,14 @@
                        
                     </div>
                     <div class="card-body">
-                        <form action="<?= base_url('Koperasi/tambahkoperasi'); ?>" method="POST">
+                        <form action="<?= base_url('Koperasi/tambahrat'); ?>" method="POST">
                            
                             <div class="form-group col-8">
                                 <label>Nama Koperasi</label>
                                 <select name="a" id="" class="form-control" required>
                                   <option value="" disabled selected hidden>[PILIH KOPERASI]</option>
                                   <?php 
-                                    foreach ($jenis as $row ): 
+                                    foreach ($koperasi as $row ): 
                                       echo '<option value="'.$row->id_koperasi.'">'.$row->nama_koperasi.'</option>
                                       ';
                                       endforeach;                                  

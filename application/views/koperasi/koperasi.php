@@ -23,9 +23,10 @@
                                 <thead>                                 
                                 <tr class="text-center">
                                     <th>No</th>
-                                    <th>Nama Koperasi</th>
+                                    <th >Nama Koperasi</th>
                                     <th>Jenis Koperasi</th>
                                     <th>Jumlah Anggota</th>
+                                    <th></th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
@@ -41,13 +42,13 @@
                                             <td><?php echo $data->jumlah_anggota; ?> </td>
                                             <td></td>
                                             <td class="text-center">
-                                                <a href="<?= base_url('Koperasi/detailkoperasi/'); ?><?= $data->id_desa; ?>" class="badge badge-warning">
+                                                <a href="<?= base_url('Koperasi/detailkoperasi/'); ?><?= $data->id_koperasi; ?>" class="badge badge-warning">
                                                         <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a href="<?= base_url('Koperasi/detailkoperasi/'); ?><?= $data->id_desa; ?>" class="badge badge-warning">
+                                                <a href="<?= base_url('Koperasi/detailkoperasi/'); ?><?= $data->id_koperasi; ?>" class="badge badge-warning">
                                                         <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="<?= base_url('Dashboard/hapusdesa/'); ?><?= $data->id_desa; ?>" class="badge badge-danger tombol-hapus">
+                                                <a href="<?= base_url('Dashboard/hapusdesa/'); ?><?= $data->id_koperasi; ?>" class="badge badge-danger tombol-hapus">
                                                       <i class="fas fa-trash"></i>
                                                 </a>
                                             </td>
