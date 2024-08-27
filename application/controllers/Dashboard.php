@@ -12,6 +12,9 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function index(){
+		if(!$this->session->userdata('username')){
+            redirect('Main');
+		}else{
 		$data = [
 			'user'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
 		];
@@ -19,11 +22,14 @@ class Dashboard extends CI_Controller {
 		$this->load->view('partials/navbar',$data);
 		$this->load->view('partials/sidebar');
 		$this->load->view('dashboard/dashboard');
-		$this->load->view('partials/footer');
+		$this->load->view('partials/footer');}
 	}
 
 	//PENGGUNA
 	public function pengguna(){
+		if(!$this->session->userdata('username')){
+            redirect('Main');
+		}else{
 		$data = [
 			'pengguna'=>$this->M_data->tampil_data('tb_user')->result(),			
 		];
@@ -31,10 +37,13 @@ class Dashboard extends CI_Controller {
 		$this->load->view('partials/navbar',$data);
 		$this->load->view('partials/sidebar');
 		$this->load->view('Dashboard/pengguna',$data);
-		$this->load->view('partials/footer');
+		$this->load->view('partials/footer');}
 	}
 
 	public function tambahpengguna(){
+		if(!$this->session->userdata('username')){
+             redirect('Main');
+		}else{
 		$data = [
 			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
 
@@ -63,18 +72,24 @@ class Dashboard extends CI_Controller {
 			$this->M_data->input_data('tb_user',$data);
 			$this->session->set_flashdata('flash', 'success-DATA BERHASIL DITAMBAHKAN');
 			redirect('Dashboard/pengguna');
-        }        
+        }}      
 	}
 
 	public function hapuspengguna($id){
+		if(!$this->session->userdata('username')){
+            redirect('Main');
+		}else{
 		$where=array('id_user' =>$id);
 		$this->M_data->hapus_data($where,'tb_user');
 		$this->session->set_flashdata('flash', 'success-DATA BERHASIL DIHAPUS');
-		redirect('Dashboard/pengguna');
+		redirect('Dashboard/pengguna');}
 	}
 
 	//KECAMATAN
     public function kecamatan(){
+		if(!$this->session->userdata('username')){
+            redirect('Main');
+		}else{
         $data = [
             'kecamatan'=>$this->M_data->tampil_data('kecamatan')->result(),	
 			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
@@ -84,10 +99,13 @@ class Dashboard extends CI_Controller {
             $this->load->view('partials/navbar',$data);
             $this->load->view('partials/sidebar');
             $this->load->view('Dashboard/kecamatan',$data);
-            $this->load->view('partials/footer');    
+            $this->load->view('partials/footer'); }   
 	}
 
     public function tambahkecamatan(){
+		if(!$this->session->userdata('username')){
+            redirect('Main');
+		}else{
         $data = [
 			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
 		];
@@ -109,18 +127,25 @@ class Dashboard extends CI_Controller {
 			$this->M_data->input_data('kecamatan',$data);
 			$this->session->set_flashdata('flash', 'success-DATA BERHASIL DITAMBAHKAN');
 			redirect('Dashboard/kecamatan');
-        }        
+        }  
+	}      
 	}
 
 	public function hapuskecamatan($id){
+		if(!$this->session->userdata('username')){
+            redirect('Main');
+		}else{
 		$where=array('id_kecamatan' =>$id);
 		$this->M_data->hapus_data($where,'kecamatan');
 		$this->session->set_flashdata('flash', 'success-DATA BERHASIL DIHAPUS');
-		redirect('Dashboard/kecamatan');
+		redirect('Dashboard/kecamatan');}
 	}
 
 	//DESA
 	public function desa(){
+		if(!$this->session->userdata('username')){
+            redirect('Main');
+		}else{
         $data = [
             'desa'=>$this->M_data->viewleftjointwotabel('desa','kecamatan','id_kecamatan'),	
 			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
@@ -129,10 +154,13 @@ class Dashboard extends CI_Controller {
 		$this->load->view('partials/navbar',$data);
 		$this->load->view('partials/sidebar');
 		$this->load->view('Dashboard/desa',$data);
-		$this->load->view('partials/footer');    
+		$this->load->view('partials/footer'); }   
 	}
 
 	public function tambahdesa(){
+		if(!$this->session->userdata('username')){
+            redirect('Main');
+		}else{
         $data = [
 			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
 		];
@@ -155,18 +183,24 @@ class Dashboard extends CI_Controller {
 			$this->M_data->input_data('desa',$data);
 			$this->session->set_flashdata('flash', 'success-DATA BERHASIL DITAMBAHKAN');
 			redirect('Dashboard/desa');
-        }        
+			} }      
 	}
 
 	public function hapusdesa($id){
+		if(!$this->session->userdata('username')){
+            redirect('Main');
+		}else{
 		$where=array('id_desa' =>$id);
 		$this->M_data->hapus_data($where,'desa');
 		$this->session->set_flashdata('flash', 'success-DATA BERHASIL DIHAPUS');
-		redirect('Dashboard/desa');
+		redirect('Dashboard/desa');}
 	}
 
 	 //JENIS KOPERASI
 	 public function jeniskoperasi(){
+		if(!$this->session->userdata('username')){
+            redirect('Main');
+		}else{
         $data = [
            
 			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array(),
@@ -176,10 +210,13 @@ class Dashboard extends CI_Controller {
 		$this->load->view('partials/navbar',$data);
 		$this->load->view('partials/sidebar');
 		$this->load->view('dashboard/jeniskoperasi',$data);
-		$this->load->view('partials/footer');    
+		$this->load->view('partials/footer');}    
 	}
 
     public function tambahjeniskoperasi(){
+		if(!$this->session->userdata('username')){
+            redirect('Main');
+		}else{
         $data = [
 			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
 		];
@@ -201,7 +238,7 @@ class Dashboard extends CI_Controller {
 			$this->M_data->input_data('jenis_koperasi',$data);
 			$this->session->set_flashdata('flash', 'success-DATA BERHASIL DITAMBAHKAN');
 			redirect('Dashboard/jeniskoperasi');
-        }        
+        }}        
 	}
 
 	

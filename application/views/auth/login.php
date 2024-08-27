@@ -45,20 +45,20 @@
                 <form method="POST" action="<?=base_url('Auth/login')?>" class="needs-validation" novalidate="">
                 <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>  
                 <div class="form-group">
-                    <label for="nip">NIP</label>
+                    <label for="nip">Username</label>
                     <input id="nip" type="text" class="form-control" name="a" tabindex="1" required autofocus>
                     <div class="invalid-feedback">
-                      Silahkan isi NIP Anda
+                     Username
                     </div>
                   </div>
 
                   <div class="form-group">
                     <div class="d-block">
-                    	<label for="password" class="control-label">Kata Sandi</label>
+                    	<label for="password" class="control-label">Password</label>
                     </div>
                     <input id="password" type="password" class="form-control" name="b" tabindex="2" required>
                     <div class="invalid-feedback">
-                      Silahkan Isi Kata Sandi Anda
+                      Password
                     </div>
                   </div>
 
@@ -73,7 +73,7 @@
               </div>
             </div>
             <div class="simple-footer">
-              Copyright &copy; Nias Barat IT Development Team
+              Copyright &copy; <?= date('Y');?> OMD TECHNOLOGY
             </div>
           </div>
         </div>

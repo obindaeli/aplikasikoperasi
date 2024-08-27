@@ -1,6 +1,6 @@
 <footer class="main-footer">
         <div class="footer-left">
-          Copyright &copy; 2023 <div class="bullet">Nias Barat IT Development Team
+          Copyright &copy; <?=date('Y');?> <div class="bullet">OMD TECHNOLOGY
         </div>
         <div class="footer-right">
           

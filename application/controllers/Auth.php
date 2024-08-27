@@ -14,24 +14,25 @@ class Auth extends CI_Controller {
                 $data =[
                     'id_user' => $user['id_user'],
                     'nama_user' => $user['nama_user'],
+                    'username' => $user['username'],
                     'role_id' => $user['role_id']
                 ];
                 $this->session->set_userdata($data);
-                // if($user['role_id']==1){
-                //     redirect('Main/Dashboard');
-                // }
-                // else if($user['role_id']==2){
-                //     redirect('Main/Dashboard');
-                // }
-                // else {
-                //     redirect('Main');
-                // }
+                if($user['role_id']==1){
+                    redirect('Dashboard');
+                }
+                else if($user['role_id']==2){
+                    redirect('Main/Dashboard');
+                }
+                else {
+                    redirect('Main');
+                }
 				$this->session->set_flashdata('flash', 'success-BERHASIL MASUK');
                 redirect('Main/Dashboard');
             }
             else{
                 $this->session->set_flashdata('flash', 'error-KONFIRMASI-PASSWORD SALAH');
-               redirect('Dashboard');
+               redirect('Main');
             }
 		}
 		else {
@@ -46,7 +47,7 @@ class Auth extends CI_Controller {
         $this->session->unset_userdata('id_level');
         //$this->session->unset_userdata('password');
         $this->session->set_flashdata('flash', 'success-KONFIRMASI-ANDA SUDAH KELUAR DARI APLIKASI');
-		redirect('Administrator');
+		redirect('Main');
     }
 
 	

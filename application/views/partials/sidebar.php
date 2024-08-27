@@ -15,7 +15,7 @@
              
             </li>
 
-            <?php //if ($this->session->userdata('id_level') == 1) : ?>
+            <?php if ($this->session->userdata('role_id') == 1) : ?>
 
             <li class="menu-header">Master</li>
             <li class="dropdown">
@@ -30,8 +30,11 @@
             </li>
              
 
-            <?php //elseif ($this->session->userdata('id_level') == 5) : ?>
-              <li class="menu-header">Modul</li>
+           
+
+
+            <?php endif; ?>
+            <li class="menu-header">Modul</li>
                 <li class="dropdown">
                   <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                     <i class="fas fa-columns"></i> <span>Koperasi</span></a>
@@ -39,24 +42,8 @@
                     <li><a class="nav-link" href="<?=base_url('Koperasi/koperasi')?>">Data Koperasi</a></li>
                     <li><a class="nav-link" href="<?=base_url('Koperasi/rat')?>">Laporan RAT</a></li>
                   </ul>
-                </li>
-            
-            <?php //elseif ($this->session->userdata('id_level') == 6) : ?>
-
-
-            <?php //endif; ?>
-
+              </li>
            
-            <!-- <li class="menu-header">Dokumen</li>
-            <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Eksaminasi</span></a>
-              <ul class="dropdown-menu">
-                <li><a href="auth-forgot-password.html">Pengajuan Baru</a></li> 
-                <li><a href="auth-login.html">Pengajuan Diproses</a></li> 
-                <li><a href="auth-register.html">Pengajuan Ditolak</a></li> 
-                <li><a href="auth-reset-password.html">Pengajuan Selesai</a></li> 
-              </ul>
-            </li> -->
           </ul>     
         </aside>
       </div>

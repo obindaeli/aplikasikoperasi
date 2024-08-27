@@ -9,7 +9,7 @@
               <div class="card">
                 <div class="card-body text-center">
                  
-                  <img src="<?=base_url('assets/')?>img/banner.png" alt="niasbarat" width="100%" height="100%">
+                  <img src="<?=base_url('assets/')?>img/niasbarat.png" alt="niasbarat" width="20%" height="60%">
                   <h3 class="text-primary">E-KOPERASI NB</h3>
                   <h4>APLIKASI KOPERASI NIAS BARAT</h4>
                   <h6>DINAS KETENAGA KERJAAN, KOPERASI DAN UKM NIAS BARAT</h6>
