@@ -71,7 +71,58 @@
 
         });
     </script>
-  
+    
+    <script>
+        // Data dari controller
+        var chartLabels = <?php echo json_encode($chart_data['labels']); ?>;
+        var chartValues = <?php echo json_encode($chart_data['values']); ?>;
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'pie', // Tipe grafik pie
+            data: {
+                labels: chartLabels,
+                datasets: [{
+                    label: 'Kategori',
+                    data: chartValues,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                var label = tooltipItem.label || '';
+                                if (label) {
+                                    label += ': ' + tooltipItem.raw;
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>   
   <!-- Template JS File -->
   <script src="<?=base_url()?>/assets/js/scripts.js"></script>
   <script src="<?=base_url()?>/assets/js/custom.js"></script>

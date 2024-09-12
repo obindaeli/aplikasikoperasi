@@ -18,10 +18,10 @@ class Dashboard extends CI_Controller {
 		$data = [
 			'user'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
 		];
-		$this->load->view('partials/header');
+		$this->load->view('partials/header',$data);
 		$this->load->view('partials/navbar',$data);
 		$this->load->view('partials/sidebar');
-		$this->load->view('dashboard/dashboard');
+		$this->load->view('dashboard/dashboard',$data);
 		$this->load->view('partials/footer');}
 	}
 
@@ -31,11 +31,12 @@ class Dashboard extends CI_Controller {
             redirect('Main');
 		}else{
 		$data = [
-			'pengguna'=>$this->M_data->tampil_data('tb_user')->result(),			
+			'user'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array(),
+			'pengguna'=>$this->M_data->tampil_data('tb_user')->result()	
 		];
-		$this->load->view('partials/header');
+		$this->load->view('partials/header',$data);
 		$this->load->view('partials/navbar',$data);
-		$this->load->view('partials/sidebar');
+		$this->load->view('partials/sidebar',$data);
 		$this->load->view('Dashboard/pengguna',$data);
 		$this->load->view('partials/footer');}
 	}
@@ -45,7 +46,7 @@ class Dashboard extends CI_Controller {
              redirect('Main');
 		}else{
 		$data = [
-			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
+			'user'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
 
 		];
 
@@ -56,9 +57,9 @@ class Dashboard extends CI_Controller {
 		]);
        
         if($this->form_validation->run()==false){
-            $this->load->view('partials/header');
+            $this->load->view('partials/header',$data);
             $this->load->view('partials/navbar',$data);
-            $this->load->view('partials/sidebar');
+            $this->load->view('partials/sidebar',$data);
             $this->load->view('dashboard/tambahpengguna',$data);
             $this->load->view('partials/footer');
         }else{
@@ -92,12 +93,12 @@ class Dashboard extends CI_Controller {
 		}else{
         $data = [
             'kecamatan'=>$this->M_data->tampil_data('kecamatan')->result(),	
-			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
+			'user'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
 		];
 
-            $this->load->view('partials/header');
-            $this->load->view('partials/navbar',$data);
-            $this->load->view('partials/sidebar');
+			$this->load->view('partials/header',$data);
+			$this->load->view('partials/navbar',$data);
+			$this->load->view('partials/sidebar',$data);
             $this->load->view('Dashboard/kecamatan',$data);
             $this->load->view('partials/footer'); }   
 	}
@@ -106,19 +107,19 @@ class Dashboard extends CI_Controller {
 		if(!$this->session->userdata('username')){
             redirect('Main');
 		}else{
-        $data = [
-			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
-		];
+        
+			
         $this->form_validation->set_rules('a','a','required|trim');
         if($this->form_validation->run()==false){
             $data = [
-                'kecamatan'=>$this->M_data->tampil_data('kecamatan')->result(),			
+                'kecamatan'=>$this->M_data->tampil_data('kecamatan')->result(),	
+				'user'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()		
             ];
-            $this->load->view('partials/header');
+            $this->load->view('partials/header',$data);
             $this->load->view('partials/navbar',$data);
-            $this->load->view('partials/sidebar');
+            $this->load->view('partials/sidebar',$data);
             $this->load->view('Dashboard/tambahkecamatan',$data);
-            $this->load->view('partials/footer');
+            $this->load->view('partials/footer',$data);
         }else{
             $data=[
 				'nama_kecamatan'=> htmlspecialchars($this->input->post('a'))
@@ -148,11 +149,11 @@ class Dashboard extends CI_Controller {
 		}else{
         $data = [
             'desa'=>$this->M_data->viewleftjointwotabel('desa','kecamatan','id_kecamatan'),	
-			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
+			'user'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
 		];
-		$this->load->view('partials/header');
-		$this->load->view('partials/navbar',$data);
-		$this->load->view('partials/sidebar');
+		$this->load->view('partials/header',$data);
+            $this->load->view('partials/navbar',$data);
+            $this->load->view('partials/sidebar',$data);
 		$this->load->view('Dashboard/desa',$data);
 		$this->load->view('partials/footer'); }   
 	}
@@ -161,17 +162,17 @@ class Dashboard extends CI_Controller {
 		if(!$this->session->userdata('username')){
             redirect('Main');
 		}else{
-        $data = [
-			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
-		];
+        
         $this->form_validation->set_rules('b','b','required|trim');
         if($this->form_validation->run()==false){
             $data = [
-                'kecamatan'=>$this->M_data->tampil_data('kecamatan')->result(),			
+                'kecamatan'=>$this->M_data->tampil_data('kecamatan')->result(),	
+				'user'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
+		
             ];
-            $this->load->view('partials/header');
+			$this->load->view('partials/header',$data);
             $this->load->view('partials/navbar',$data);
-            $this->load->view('partials/sidebar');
+            $this->load->view('partials/sidebar',$data);
             $this->load->view('Dashboard/tambahdesa',$data);
             $this->load->view('partials/footer');
         }else{
@@ -203,12 +204,12 @@ class Dashboard extends CI_Controller {
 		}else{
         $data = [
            
-			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array(),
-            'jeniskoperasi'=>$this->M_data->tampil_data('jenis_koperasi')->result(),			
+			'user'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array(),
+            'jeniskoperasi'=>$this->M_data->tampil_data('jenis_koperasi')->result()			
 		];
-		$this->load->view('partials/header');
-		$this->load->view('partials/navbar',$data);
-		$this->load->view('partials/sidebar');
+		$this->load->view('partials/header',$data);
+            $this->load->view('partials/navbar',$data);
+            $this->load->view('partials/sidebar',$data);
 		$this->load->view('dashboard/jeniskoperasi',$data);
 		$this->load->view('partials/footer');}    
 	}
@@ -218,17 +219,17 @@ class Dashboard extends CI_Controller {
             redirect('Main');
 		}else{
         $data = [
-			'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
+			'user'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
 		];
         $this->form_validation->set_rules('a','a','required|trim');
        
         if($this->form_validation->run()==false){
             $data = [
-                'pengguna'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
+				'user'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
             ];
-            $this->load->view('partials/header');
+            $this->load->view('partials/header',$data);
             $this->load->view('partials/navbar',$data);
-            $this->load->view('partials/sidebar');
+            $this->load->view('partials/sidebar',$data);
             $this->load->view('dashboard/tambahjeniskoperasi',$data);
             $this->load->view('partials/footer');
         }else{

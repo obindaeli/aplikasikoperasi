@@ -23,7 +23,7 @@
                                 <thead>                                 
                                 <tr class="text-center">
                                     <th>No</th>
-                                    <th >Nama Koperasi</th>
+                                    <th>Nama Koperasi</th>
                                     <th>Jenis Koperasi</th>
                                     <th>Jumlah Anggota</th>
                                     <th></th>
@@ -45,8 +45,8 @@
                                                 <a href="<?= base_url('Koperasi/detailkoperasi/'); ?><?= $data->id_koperasi; ?>" class="badge badge-warning">
                                                         <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a href="<?= base_url('Koperasi/detailkoperasi/'); ?><?= $data->id_koperasi; ?>" class="badge badge-warning">
-                                                        <i class="fas fa-edit"></i>
+                                                <a href="<?= base_url('Koperasi/report/'); ?><?= $data->id_koperasi; ?>" class="badge badge-info" target="blank">
+                                                        <i class="fas fa-download"></i>
                                                 </a>
                                                 <a href="<?= base_url('Dashboard/hapusdesa/'); ?><?= $data->id_koperasi; ?>" class="badge badge-danger tombol-hapus">
                                                       <i class="fas fa-trash"></i>

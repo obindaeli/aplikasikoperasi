@@ -39,7 +39,7 @@
             </div>
 
             <div class="card card-primary">
-              <div class="card-header"><h4>Login</h4></div>
+              <div class="card-header text-center"><h4>APLIKASI PERKOPERASIAN KABUPATEN NIAS BARAT</h4></div>
 
               <div class="card-body">
                 <form method="POST" action="<?=base_url('Auth/login')?>" class="needs-validation" novalidate="">

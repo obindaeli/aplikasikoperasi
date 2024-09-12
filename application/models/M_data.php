@@ -65,9 +65,26 @@ class M_data extends CI_Model{
             return $query->result();
         }
 
+        public function getreport($id,$tahun){
+            $query=$this->db->query("SELECT * FROM `tb_rat` 
+                                    JOIN koperasi ON koperasi.id_koperasi=tb_rat.id_koperasi
+                                    JOIN kecamatan ON kecamatan.id_kecamatan=koperasi.id_kecamatan
+                                    JOIN desa ON kecamatan.id_kecamatan=desa.id_desa
+                                    WHERE koperasi.id_koperasi='$id' AND tb_rat.tahun_rat='$tahun'");
+            return $query->result();
+        }
+
         public function getdokumen($id){
             $query=$this->db->query("SELECT *FROM `dokumen` WHERE id_pengajuan ='$id'");
             return $query->result();
+        }
+
+        public function getgrafik(){
+            $query=$this->db->query("SELECT kecamatan.nama_kecamatan as kecamatan, COUNT(koperasi.id_koperasi) AS banyak 
+                                    FROM kecamatan 
+                                    LEFT JOIN koperasi ON koperasi.id_kecamatan=kecamatan.id_kecamatan 
+                                    GROUP BY kecamatan.id_kecamatan;");
+            return $query->result_array();
         }
 
        
