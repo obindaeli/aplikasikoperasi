@@ -16,14 +16,32 @@ class Dashboard extends CI_Controller {
             redirect('Main');
 		}else{
 		$data = [
-			'user'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array()
+			'user'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array(),
+			'chart_data' => $this->get_chart_data()
 		];
+
 		$this->load->view('partials/header',$data);
 		$this->load->view('partials/navbar',$data);
-		$this->load->view('partials/sidebar');
+		$this->load->view('partials/sidebar',$data);
 		$this->load->view('dashboard/dashboard',$data);
 		$this->load->view('partials/footer');}
 	}
+
+	private function get_chart_data()
+    {
+        $labels = [];
+        $values = [];
+        $koperasi=$this->M_data->getgrafik() ;
+        foreach ($koperasi as $row) {
+            $labels[] = $row['kecamatan'];
+            $values[] = (int)$row['banyak'];
+        }
+
+        return [
+            'labels' => $labels,
+            'values' => $values
+        ];
+    }
 
 	//PENGGUNA
 	public function pengguna(){
