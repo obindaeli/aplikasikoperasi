@@ -12,7 +12,8 @@
                     <h4>Daftar RAT</h4>
                     <div class="card-header-action">
                         <div class="btn-group">
-                            <a href="<?=base_url('Koperasi/tambahrat')?>" class="btn btn-primary"> Tambah Data</a>
+                            <a href="<?=base_url('Koperasi/tambahrat')?>" class="btn btn-primary"> Tambah RAT</a>
+                            <a href="<?=base_url('Koperasi/Report')?>" class="btn btn-warning"> Report RAT </a>
                         </div>
                     </div>
                 </div>
@@ -28,8 +29,7 @@
                                     <th>Nama Koperasi</th>
                                     <th>Modal Usaha</th>
                                     <th>Volume Usaha</th>
-                                    <th>Sisa Hasil Usaha</th>
-                                   
+                                    <th>Sisa Hasil Usaha</th>   
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>

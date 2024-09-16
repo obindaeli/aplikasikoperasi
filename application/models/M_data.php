@@ -51,31 +51,10 @@ class M_data extends CI_Model{
             return $query->result();
         }
 
-        public function getpermohonanbaru($step, $status){
-            $query=$this->db->query("SELECT *, opd.nama_opd FROM `pengajuan` 
-                                    JOIN opd ON opd.id_opd=pengajuan.id_opd
-                                    WHERE status_pengajuan='$status' AND step ='$step'");
-            return $query->result();
-        }
-
-        public function getdetailpermohonanbaru($id){
-            $query=$this->db->query("SELECT *, opd.nama_opd FROM `pengajuan` 
-                                    JOIN opd ON opd.id_opd=pengajuan.id_opd
-                                    WHERE id_pengajuan ='$id'");
-            return $query->result();
-        }
+     
 
         public function getreport($id,$tahun){
-            $query=$this->db->query("SELECT * FROM `tb_rat` 
-                                    JOIN koperasi ON koperasi.id_koperasi=tb_rat.id_koperasi
-                                    JOIN kecamatan ON kecamatan.id_kecamatan=koperasi.id_kecamatan
-                                    JOIN desa ON kecamatan.id_kecamatan=desa.id_desa
-                                    WHERE koperasi.id_koperasi='$id' AND tb_rat.tahun_rat='$tahun'");
-            return $query->result();
-        }
-
-        public function getdokumen($id){
-            $query=$this->db->query("SELECT *FROM `dokumen` WHERE id_pengajuan ='$id'");
+            $query=$this->db->query("SELECT * FROM `tb_rat` LEFT JOIN koperasi ON koperasi.id_koperasi=tb_rat.id_koperasi LEFT JOIN kecamatan ON kecamatan.id_kecamatan=koperasi.id_kecamatan LEFT JOIN desa ON kecamatan.id_kecamatan=desa.id_desa WHERE tb_rat.id_koperasi='$id' AND tb_rat.tahun_rat='$tahun'");
             return $query->result();
         }
 

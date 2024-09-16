@@ -145,18 +145,15 @@ class Koperasi extends CI_Controller {
         }  }     
 	}
 	
-    public function report($id){
+    public function report(){
         if(!$this->session->userdata('username')){
             redirect('Main');
 		}else{
-            $id=$id;
             $data = [	
                 'user'=> $this->db->get_where('tb_user',['username'=> $this->session->userdata('username')])->row_array(),
+                'koperasi'=>$this->M_data->tampil_data('koperasi')->result() 
                 	
             ];
-            $detail=$this->M_data->detail_data($id);
-            $data['detail']=$detail;
-            //var_dump($data);
             $this->load->view('partials/header',$data);
             $this->load->view('partials/navbar',$data);
             $this->load->view('partials/sidebar',$data);
@@ -194,5 +191,29 @@ class Koperasi extends CI_Controller {
             'labels' => $labels,
             'values' => $values
         ];
+    }
+
+    public function generate_report()
+    {
+        $this->load->library('Dompdf_gen');
+        $id=$this->input->post('a');
+        $tahun=$this->input->post('b');
+
+        $data = [	
+            'cetak' => $this->M_data->getreport($id,$tahun)    
+        ];
+
+        //var_dump($data);
+
+        $this->load->view('koperasi/view_report',$data);
+        $tgl=date('Y-m-d');
+        $paper_size='A4';
+        $orientation="potrait";
+        $html=$this->output->get_output();
+        $this->dompdf->set_paper($paper_size,$orientation);
+
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        $this->dompdf->stream("Report_$tgl.pdf", array('attachment'=>0));
     }
 }
